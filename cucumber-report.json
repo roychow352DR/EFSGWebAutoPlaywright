@@ -1,0 +1,97 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "admin-portal--login;ogin-with-unauthorized-account-credentials---invalid-username-and-password",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "ogin with unauthorized account credentials - invalid username and password",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1657896250
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "the user lands on Admin Portal login page",
+            "match": {
+              "location": "tests/steps/applicationSteps.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3277709333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "the user fills in with username 'qaauto' and password 'Test1234'",
+            "match": {
+              "location": "tests/steps/applicationSteps.js:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 453468747
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "the user clicks Sign In button",
+            "match": {
+              "location": "tests/steps/applicationSteps.js:39"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 421706874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "the user sees \"Invalid username or password.\" message pop up",
+            "match": {
+              "location": "tests/steps/applicationSteps.js:54"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 773134790
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2472609499
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Test",
+            "line": 3
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "admin-portal--login",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Admin Portal  login",
+    "tags": [],
+    "uri": "tests/features/AP-3.feature"
+  }
+]

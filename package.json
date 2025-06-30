@@ -1,0 +1,24 @@
+{
+  "name": "playwrightautocucumber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "adminPortalRegression" : "PRODUCT=adminportal ENV=bauuat npx cucumber-js --tags=@Test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^24.0.0"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "dotenv": "^16.5.0",
+    "form-data": "^4.0.3",
+    "formdata-node": "^6.0.3",
+    "node-fetch": "^3.3.2",
+    "properties-reader": "^2.3.0"
+  }
+}
