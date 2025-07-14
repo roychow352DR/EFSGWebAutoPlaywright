@@ -4,69 +4,95 @@
     "elements": [
       {
         "description": "",
-        "id": "admin-portal--login;ogin-with-unauthorized-account-credentials---invalid-username-and-password",
-        "keyword": "Scenario",
-        "line": 4,
-        "name": "ogin with unauthorized account credentials - invalid username and password",
+        "id": "ao-application-list;account-status-in-spec.-approval-for-pending-deposit-after-first-approve-reason",
+        "keyword": "Scenario Outline",
+        "line": 3,
+        "name": "Account status in Spec. Approval for Pending Deposit after first approve reason",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1657896250
+              "duration": 1533450207
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 5,
-            "name": "the user lands on Admin Portal login page",
+            "line": 4,
+            "name": "the user logged in to Admin Portal as username 'qaauto' and password 'Test1234@'",
             "match": {
-              "location": "tests/steps/applicationSteps.js:20"
+              "location": "tests/steps/applicationSteps.js:54"
             },
             "result": {
               "status": "passed",
-              "duration": 3277709333
+              "duration": 3564107748
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "the user clicks detail button of \"Pending Deposit\" record on the application page",
+            "match": {
+              "location": "tests/steps/applicationSteps.js:109"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 888033540
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 6,
-            "name": "the user fills in with username 'qaauto' and password 'Test1234'",
+            "name": "the user clicks \"Activate live trading account\" button on the application information page",
             "match": {
-              "location": "tests/steps/applicationSteps.js:28"
+              "location": "tests/steps/applicationSteps.js:114"
             },
             "result": {
               "status": "passed",
-              "duration": 453468747
+              "duration": 417055083
             }
           },
           {
             "arguments": [],
-            "keyword": "When ",
+            "keyword": "And ",
             "line": 7,
-            "name": "the user clicks Sign In button",
+            "name": "the user selects \"Verify the Applicants in real person\" as verify reason on the activate live trade account pop up",
             "match": {
-              "location": "tests/steps/applicationSteps.js:39"
+              "location": "tests/steps/applicationSteps.js:139"
             },
             "result": {
               "status": "passed",
-              "duration": 421706874
+              "duration": 1060230834
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the user clicks \"Confirm\" button on the application information page",
+            "match": {
+              "location": "tests/steps/applicationSteps.js:114"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 522189790
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 8,
-            "name": "the user sees \"Invalid username or password.\" message pop up",
+            "line": 9,
+            "name": "the user sees a record in \"Spec. Approval for Pending Deposit\" status is created on the application list",
             "match": {
-              "location": "tests/steps/applicationSteps.js:54"
+              "location": "tests/steps/applicationSteps.js:104"
             },
             "result": {
               "status": "passed",
-              "duration": 773134790
+              "duration": 715164081
             }
           },
           {
@@ -74,24 +100,24 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2472609499
+              "duration": 4470451333
             }
           }
         ],
         "tags": [
           {
             "name": "@Test",
-            "line": 3
+            "line": 2
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "admin-portal--login",
+    "id": "ao-application-list",
     "line": 1,
     "keyword": "Feature",
-    "name": "Admin Portal  login",
+    "name": "AO Application List",
     "tags": [],
-    "uri": "tests/features/AP-3.feature"
+    "uri": "tests/features/AdminPortal/aoapplication/AP-359.feature"
   }
 ]

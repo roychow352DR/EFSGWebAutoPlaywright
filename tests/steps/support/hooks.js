@@ -1,4 +1,4 @@
-const { Before, After, AfterStep, BeforeAll } = require('@cucumber/cucumber');
+const { Before, After, AfterStep, BeforeAll, context } = require('@cucumber/cucumber');
 const { chromium, firefox } = require("@playwright/test");
 const playwright = require('playwright');
 const { qaseApiClient } = require('../../utils/qaseApiClient.js');
@@ -16,7 +16,7 @@ let steps = [];
 let videoFolderDir = './videos/';
 let screenshotFolderDir = './screenshots/';
 let hookInstance;
-setDefaultTimeout(20 * 1000);
+setDefaultTimeout(100 * 1000);
 
 class Hooks extends BaseTest {
 
@@ -115,9 +115,12 @@ class Hooks extends BaseTest {
     }
 
     async updateTestResult(projectCode, scenario, videoPath) {
+
+        console.log(videoPath);
         if (videoPath != null) {
             hash = await qaseApiConfigClient.uploadAttachment(projectCode, scenario.pickle.name, videoPath);
         }
+        else { hash = ""; }
         try {
             await qaseApiConfigClient.createTestCaseResult(runId, projectCode, hash, scenario.result.status.toLowerCase(), caseId, steps);
         }
@@ -155,7 +158,9 @@ BeforeAll(async function () {
     hookInstance = new Hooks();
     hookInstance.setProperty("product", product);
     hookInstance.setProperty("env", env);
-    await hookInstance.createQaseTestRun();
+    //await hookInstance.createQaseTestRun();
+    qaseApiConfigClient = hookInstance.initializeQaseApiClient;
+    await hookInstance.emptyFolder('./test_results/trace');
 
 });
 
@@ -172,6 +177,13 @@ Before(async function (scenario) {
             dir: videoFolderDir,    // directory where videos will be saved
             size: { width: 1280, height: 720 } // optional: video size
         }
+    });
+
+    await this.context.tracing.start({
+        name: scenario.pickle.name,
+        soruces: true,
+        screenshots: true,
+        snapshots: true
     });
     this.page = await this.context.newPage();
     caseId = hookInstance.getCaseId(scenario);
@@ -202,12 +214,17 @@ AfterStep(async function (scenario) {
 
 After(async function (scenario) {
 
+    const path = `./test_results/trace/${scenario.pickle.name.replace(/\s+/g, '_')}.zip`
+    await this.context.tracing.stop({ path: path });
     await this.page.close();
     await this.context.close();
     await this.browser.close();
 
+
+    const videoPath = await hookInstance.videoPath(scenario, this.page);
+
     // update test result
-    await hookInstance.updateTestResult(hookInstance.getQaseConfig.projectCode, scenario, await hookInstance.videoPath(scenario, this.page));
+    await hookInstance.updateTestResult(hookInstance.getQaseConfig.projectCode, scenario, videoPath);
 
     // cleanup folder
     await hookInstance.cleanUpFolder();

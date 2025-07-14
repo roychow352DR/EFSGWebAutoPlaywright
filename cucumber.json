@@ -37,7 +37,9 @@
 
             "progress-bar",
 
-            "json:./cucumber-report.json"
+            "json:./cucumber-report.json",
+
+            "rerun:@rerun.txt"
 
         ]
 

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "adminPortalRegression" : "PRODUCT=adminportal ENV=bauuat npx cucumber-js --tags=@Test"
+    "adminPortalRegression" : "PRODUCT=adminportal ENV=bauuat npx cucumber-js --tags=@Test",
+    "test:failed" : "cucumber-js @rerun.txt"
   },
   "keywords": [],
   "author": "",
